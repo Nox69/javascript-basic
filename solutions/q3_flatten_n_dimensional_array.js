@@ -1,7 +1,21 @@
 /* Write a Program to Flatten a given n-dimensional array */
 
-const flatten = () => {
+const flatten = (array) => {
 	// Write your code here
+    if(Array.isArray(array)){
+        return flat(array);
+    }
+    else{
+        return null;
+    }
+};
+function flat(array){
+    var output = array.reduce(
+        function(arr,element){
+            return arr.concat(Array.isArray(element) ? flat(element) : element);
+        },[]
+    );
+    return output;
 };
 
 /* For example,
